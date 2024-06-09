@@ -596,10 +596,6 @@ video {
   display: flex;
 }
 
-.h-\[500px\] {
-  height: 500px;
-}
-
 .h-full {
   height: 100%;
 }
@@ -632,6 +628,20 @@ video {
   flex-direction: column;
 }
 
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -648,14 +658,9 @@ video {
   border-width: 1px;
 }
 
-.bg-gray-100 {
+.bg-blue-500 {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.bg-gray-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 
 .p-2 {
@@ -666,6 +671,11 @@ video {
   padding: 1rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -674,6 +684,11 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .shadow {
@@ -693,31 +708,32 @@ html, body, #root, .container {
 }
 
 .map-and-form-table {
-  border: 1px solid black;
   width: 70%;
   height: 600px;
+  display: flex;
+  flex-direction: column;
 }
 
 .list-table {
-  border: 1px solid black;
   width: 30%;
   height: 600px;
+  overflow-y: auto;
 }
 
 .map-container {
-  height: 400px;
-  width: 400px;
-  margin-bottom: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .leaflet-container {
-  height: 100%;
-  width: 100%;
+  height: 400px;
+  width: 400px;
 }
 
 .user-list {
   height: 500px;
-  width: 300px;
   display: flex;
   gap: 10px;
   flex-direction: column;
@@ -731,4 +747,27 @@ html, body, #root, .container {
 
 .user-card:hover {
   background-color: #f0f0f0;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.tabs{
+  display: flex;
+  width: 250px;
+  border: 2px solid #000;
+  .tab {
+    background-color: rgb(212, 235, 235);
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .tab-active {
+    background-color: #1c54a4;
+  }
 }

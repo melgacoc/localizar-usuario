@@ -59,27 +59,27 @@ const HomePage = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl mb-4">Localizar usuários</h1>
-      <div className="flex h-screen" style={{ display: 'flex' }}>
+      <div className="flex h-screen" style={{ display: 'flex'}}>
         <div className="w-2/3 h-full flex flex-col map-and-form-table">
-          <div className="flex" >
-            <button
-              className={`flex-1 p-2 ${activeTab === 'map' ? 'bg-gray-300' : 'bg-gray-100'}`}
+          <div className="flex tabs">
+            <div
+              className={`tab ${activeTab === 'map' ? 'tab-active' : ''}`}
               onClick={() => setActiveTab('map')}
             >
-              Map
-            </button>
-            <button
-              className={`flex-1 p-2 ${activeTab === 'form' ? 'bg-gray-300' : 'bg-gray-100'}`}
+              Localização
+            </div>
+            <div
+              className={`tab ${activeTab === 'form' ? 'tab-active' : ''}`}
               onClick={() => setActiveTab('form')}
             >
-              Form
-            </button>
+              Cadastro
+            </div>
           </div>
-          <div className="flex-1 overflow-hidden">
+          <div className="flex-1 overflow-hidden map-container">
             {renderTabContent()}
           </div>
         </div>
-        <div className="w-1/3 h-[500px] overflow-y-auto list-table">
+        <div className="w-1/3 h-full overflow-y-auto list-table">
           <UserFilter onFilterChange={handleFilterChange} />
           <UserList users={filteredUsers} onUserClick={handleUserClick} selectedUser={selectedUser} />
         </div>

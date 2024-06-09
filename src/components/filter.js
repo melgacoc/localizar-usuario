@@ -20,14 +20,14 @@ const UserFilter = ({ onFilterChange }) => {
     <div className="user-filter p-4">
       <input
         type="text"
-        placeholder="Filter by name"
+        placeholder="Filtrar por nome"
         value={name}
         onChange={handleNameChange}
         className="p-2 border rounded mb-2 w-full"
       />
       <input
         type="text"
-        placeholder="Filter by address"
+        placeholder="Filtrar por endereço"
         value={address}
         onChange={handleAddressChange}
         className="p-2 border rounded w-full"
