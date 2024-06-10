@@ -17,7 +17,7 @@ const UserFilter = ({ onFilterChange }) => {
   };
 
   return (
-    <div className="user-filter p-4">
+    <div className="user-filter pb-4">
       <input
         type="text"
         placeholder="Filtrar por nome"

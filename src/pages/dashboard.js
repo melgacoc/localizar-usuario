@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { fetchUsers } from '../util/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUsers, addUser } from '../store/action';
 import UserMap from '../components/map';
@@ -15,12 +15,11 @@ const HomePage = () => {
   const [activeTab, setActiveTab] = useState('map');
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users')
-      .then(response => {
-        dispatch(setUsers(response.data));
-        setFilteredUsers(response.data);
-      })
-      .catch(error => console.error('Error fetching users:', error));
+    document.title = 'Localizar usuário';
+    fetchUsers().then((users) => {
+      dispatch(setUsers(users));
+      setFilteredUsers(users);
+    });
   }, [dispatch]);
 
   const handleUserClick = (user) => {
@@ -57,10 +56,12 @@ const HomePage = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container">
+      <header className='header'>
       <h1 className="text-3xl mb-4">Localizar usuários</h1>
-      <div className="flex h-screen" style={{ display: 'flex'}}>
-        <div className="w-2/3 h-full flex flex-col map-and-form-table">
+      </header>
+      <div className="flex h-screen content-container" style={{ display: 'flex', justifyContent: 'center'}}>
+        <div className="w-2/3 h-full flex flex-col pt-[50px] map-and-form-table">
           <div className="flex tabs">
             <div
               className={`tab ${activeTab === 'map' ? 'tab-active' : ''}`}
@@ -79,11 +80,18 @@ const HomePage = () => {
             {renderTabContent()}
           </div>
         </div>
-        <div className="w-1/3 h-full overflow-y-auto list-table">
+        <div className="w-1/3 h-full overflow-y-auto list-table pt-[50px]">
           <UserFilter onFilterChange={handleFilterChange} />
           <UserList users={filteredUsers} onUserClick={handleUserClick} selectedUser={selectedUser} />
         </div>
       </div>
+      <footer className='footer'>
+      <h1 className="text-2xl mb-4">
+        <a href="https://github.com/melgacoc/localizar-usuario" target="_blank" rel="noopener noreferrer">
+          Link para o repositório do projeto
+      </a>
+    </h1>
+      </footer>
     </div>
   );
 };

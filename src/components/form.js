@@ -9,9 +9,26 @@ const UserForm = ({ addUser }) => {
   const [city, setCity] = useState('');
   const [lat, setLat] = useState('');
   const [lng, setLng] = useState('');
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+    if (!name) newErrors.name = true;
+    if (!email) newErrors.email = true;
+    if (!street) newErrors.street = true;
+    if (!suite) newErrors.suite = true;
+    if (!zipcode) newErrors.zipcode = true;
+    if (!city) newErrors.city = true;
+    if (!lat) newErrors.lat = true;
+    if (!lng) newErrors.lng = true;
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validate()) return;
     addUser({
       name,
       email,
@@ -22,9 +39,9 @@ const UserForm = ({ addUser }) => {
         city,
         geo: {
           lat,
-          lng
-        }
-      }
+          lng,
+        },
+      },
     });
     setName('');
     setEmail('');
@@ -34,68 +51,72 @@ const UserForm = ({ addUser }) => {
     setCity('');
     setLat('');
     setLng('');
+    setErrors({});
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center space-y-4 form">
-      <h1 className="text-2xl">Adicionar Usuário</h1>
+    <form onSubmit={handleSubmit} className="flex flex-col items-center form">
+      <h1 className="text-2xl">Novo Usuário</h1>
       <input
         type="text"
-        placeholder="Nome"
+        placeholder="Nome*"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="p-2 border rounded"
+        className={`p-2 border rounded input ${errors.name ? 'border-error' : ''}`}
       />
       <input
         type="email"
-        placeholder="Email"
+        placeholder="Email*"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="p-2 border rounded"
+        className={`p-2 border rounded input ${errors.email ? 'border-error' : ''}`}
       />
       <input
         type="text"
-        placeholder="Rua"
+        placeholder="Rua*"
         value={street}
         onChange={(e) => setStreet(e.target.value)}
-        className="p-2 border rounded"
+        className={`p-2 border rounded input ${errors.street ? 'border-error' : ''}`}
       />
       <input
         type="text"
-        placeholder="Número da casa"
+        placeholder="Número da casa*"
         value={suite}
         onChange={(e) => setSuite(e.target.value)}
-        className="p-2 border rounded"
+        className={`p-2 border rounded input ${errors.suite ? 'border-error' : ''}`}
       />
       <input
         type="text"
-        placeholder="Cep"
+        placeholder="Cep*"
         value={zipcode}
         onChange={(e) => setZipcode(e.target.value)}
-        className="p-2 border rounded"
+        className={`p-2 border rounded input ${errors.zipcode ? 'border-error' : ''}`}
       />
       <input
         type="text"
-        placeholder="Cidade"
+        placeholder="Cidade*"
         value={city}
         onChange={(e) => setCity(e.target.value)}
-        className="p-2 border rounded"
+        className={`p-2 border rounded input ${errors.city ? 'border-error' : ''}`}
       />
       <input
         type="text"
-        placeholder="Latitude"
+        placeholder="Latitude*"
         value={lat}
         onChange={(e) => setLat(e.target.value)}
-        className="p-2 border rounded"
+        className={`p-2 border rounded input ${errors.lat ? 'border-error' : ''}`}
       />
       <input
         type="text"
-        placeholder="Longitude"
+        placeholder="Longitude*"
         value={lng}
         onChange={(e) => setLng(e.target.value)}
-        className="p-2 border rounded"
+        className={`p-2 border rounded input ${errors.lng ? 'border-error' : ''}`}
       />
-      <button type="submit" className="p-2 bg-blue-500 text-white rounded">Adicionar usuário</button>
+      {Object.keys(errors).length > 0 && (
+        <p className="text-error mb-2">Por favor, preencha todos os campos obrigatórios.</p>
+      )}
+      <button type="submit" className="p-2 bg-primary text-black rounded w-[200px]">Adicionar novo usuário</button>
     </form>
   );
 };

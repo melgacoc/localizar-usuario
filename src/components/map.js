@@ -17,8 +17,8 @@ const UserMap = ({ users, selectedUser }) => {
   const usersToShow = selectedUser ? [selectedUser] : users;
 
   return (
-    <div className="flex justify-center items-center">
-      <MapContainer center={center} zoom={selectedUser ? 10 : 2} style={{ height: '400px', width: '400px' }}>
+    <div className="flex map">
+      <MapContainer center={center} zoom={selectedUser ? 10 : 2} style={{ height: '100%', width: '100%' }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />

@@ -7,14 +7,14 @@ WORKDIR /usr/src/app
 # Copy application dependency manifests to the container image.
 COPY package*.json ./
 
-# Install dependencies.
-RUN npm install
-
 # Copy local code to the container image.
 COPY . .
 
-# Build the app
-RUN npm run build
+# Install dependencies, build the app, and start the server
+RUN npm run dev
 
-# Run the web service on container startup.
-CMD [ "npm", "start" ]
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Start the app
+CMD ["npm", "start"]
