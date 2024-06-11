@@ -65,5 +65,5 @@ docker run -p 3000:80 localizar-usuario
 
 ---
 
-Developed by [Cláudio Melgaço](https://github.com/melgacoc) 2022
+Developed by [Cláudio Melgaço](https://github.com/melgacoc) 2024
 
