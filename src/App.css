@@ -71,7 +71,7 @@ body {
 }
 
 .user-list {
-  height: 83%;
+  height: 79%;
   display: flex;
   gap: 10px;
   flex-direction: column;
