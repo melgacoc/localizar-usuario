@@ -3,6 +3,9 @@
 ## Introdução
 Um localizador de usuários cadastrados que indica a posição geográfica no mapa.
 
+# Aplicação em deploy
+https://master--localizar-usuario-cm.netlify.app/
+
 ---
 
 ## Funcionalidades:
@@ -22,7 +25,10 @@ Um localizador de usuários cadastrados que indica a posição geográfica no ma
 ## Instalação do projeto localmente
 
 1. No terminal, em um diretório de sua escolha, clonar o repositório:
-`git@github.com:melgacoc/localizar-usuario.git`
+
+```
+git@github.com:melgacoc/localizar-usuario.git
+```
 
 2. No repositório do projeto, instalar as dependências:
 
@@ -36,7 +42,7 @@ npm install
 npm start
 ```
 
-4. Se quiser rodar os testes, rodar o comando:
+4. Para os testes, rodar o comando:
 
 ```
 npm test
@@ -44,12 +50,17 @@ npm test
 
 ---
 
-## Testes
-Os testes foram desenvolvidos utilizando a biblioteca React Testing Library
-1. No terminal execute:
+## Docker
+O projeto possuí um arquivo Dockerfile para criar uma imagem do projeto
+1. No terminal execute para criar a imagem:
 
 ```
-npm run test-coverage
+docker build -t localizar-usuario
+```
+
+2.Execute a imagem na porta 3000:
+```
+docker run -p 3000:80 localizar-usuario
 ```
 
 ---
