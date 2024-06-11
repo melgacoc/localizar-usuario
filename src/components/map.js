@@ -1,24 +1,27 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../fixLeaffletIcons';
 
 const UserMap = ({ users, selectedUser }) => {
-  const center = useMemo(() => {
+  const [center, setCenter] = useState([0, 0]);
+
+  useEffect(() => {
     const usersToConsider = selectedUser ? [selectedUser] : users;
-    if (usersToConsider.length === 0) return [0, 0];
-    if (usersToConsider.length === 1) {
-      return [parseFloat(usersToConsider[0].address.geo.lat), parseFloat(usersToConsider[0].address.geo.lng)];
+    if (usersToConsider.length == 0) {
+      setCenter([0, 0]);
+    } else if (usersToConsider.length == 1) {
+      setCenter([parseFloat(usersToConsider[0].address.geo.lat), parseFloat(usersToConsider[0].address.geo.lng)]);
+    } else {
+      const latitudes = usersToConsider.map(user => parseFloat(user.address.geo.lat));
+      const longitudes = usersToConsider.map(user => parseFloat(user.address.geo.lng));
+      const avgLat = latitudes.reduce((acc, lat) => acc + lat, 0) / latitudes.length;
+      const avgLng = longitudes.reduce((acc, lng) => acc + lng, 0) / longitudes.length;
+      setCenter([avgLat, avgLng]);
     }
-    const latitudes = usersToConsider.map(user => parseFloat(user.address.geo.lat));
-    const longitudes = usersToConsider.map(user => parseFloat(user.address.geo.lng));
-    const avgLat = latitudes.reduce((acc, lat) => acc + lat, 0) / latitudes.length;
-    const avgLng = longitudes.reduce((acc, lng) => acc + lng, 0) / longitudes.length;
-    return [avgLat, avgLng];
   }, [users, selectedUser]);
 
   const usersToShow = selectedUser ? [selectedUser] : users;
-  console.log(center);
 
   return (
     <div className="flex map">
@@ -37,7 +40,6 @@ const UserMap = ({ users, selectedUser }) => {
                 <h3>{user.name}</h3>
                 <p><strong>Email:</strong> {user.email}</p>
                 <p><strong>Address:</strong> {user.address.suite}, {user.address.street}, {user.address.city}, {user.address.zipcode}</p>
-                <p><strong>Phone:</strong> {user.phone}</p>
               </div>
             </Popup>
           </Marker>

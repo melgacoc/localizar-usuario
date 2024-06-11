@@ -28,6 +28,7 @@ const HomePage = () => {
     } else {
       setSelectedUser(user);
     }
+    setActiveTab('map');
   };
 
   const handleFilterChange = (name, address) => {
