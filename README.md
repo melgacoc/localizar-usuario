@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# React Redux Localizador
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introdução
+Um localizador de usuários cadastrados que indica a posição geográfica no mapa.
 
-## Available Scripts
+# Aplicação em deploy
+https://master--localizar-usuario-cm.netlify.app/
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Funcionalidades:
+- Mostrar a localização de usuários no mapa;
+- Exibir informações adicionais do usuário ao clicar em seu pin;
+- Cadastrar novos usuários;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tecnológias
 
-### `npm test`
+![React Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Redux Badge](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+![Tailwind Badge](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Instalação do projeto localmente
 
-### `npm run build`
+1. No terminal, em um diretório de sua escolha, clonar o repositório:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+git@github.com:melgacoc/localizar-usuario.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. No repositório do projeto, instalar as dependências:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm install
+```
 
-### `npm run eject`
+3. Após isso, rodar o comando que abre no navegador uma aba com projeto:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Para os testes, rodar o comando:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm test
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Docker
+O projeto possuí um arquivo Dockerfile para criar uma imagem do projeto
+1. No terminal execute para criar a imagem:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+docker build -t localizar-usuario
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2.Execute a imagem na porta 3000:
+```
+docker run -p 3000:80 localizar-usuario
+```
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Developed by [Cláudio Melgaço](https://github.com/melgacoc) 2024
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
