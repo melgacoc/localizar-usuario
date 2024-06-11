@@ -8,9 +8,9 @@ const UserMap = ({ users, selectedUser }) => {
 
   useEffect(() => {
     const usersToConsider = selectedUser ? [selectedUser] : users;
-    if (usersToConsider.length == 0) {
+    if (usersToConsider.length === 0) {
       setCenter([0, 0]);
-    } else if (usersToConsider.length == 1) {
+    } else if (usersToConsider.length === 1) {
       setCenter([parseFloat(usersToConsider[0].address.geo.lat), parseFloat(usersToConsider[0].address.geo.lng)]);
     } else {
       const latitudes = usersToConsider.map(user => parseFloat(user.address.geo.lat));
