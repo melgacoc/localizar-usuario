@@ -58,7 +58,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <div className="flex h-screen content-container" style={{ display: 'flex', justifyContent: 'center'}}>
-        <div className="teste">
+        <div className="main-content">
           <div className="flex tabs">
             <div
               className={`flex tab tab-loc ${activeTab === 'map' ? 'tab-active' : ''}`}
