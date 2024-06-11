@@ -59,6 +59,7 @@ const UserForm = ({ addUser }) => {
       <h1 className="text-2xl">Novo Usuário</h1>
       <input
         type="text"
+        id="name"
         placeholder="Nome*"
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -66,6 +67,7 @@ const UserForm = ({ addUser }) => {
       />
       <input
         type="email"
+        id="email"
         placeholder="Email*"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -73,6 +75,7 @@ const UserForm = ({ addUser }) => {
       />
       <input
         type="text"
+        id="street"
         placeholder="Rua*"
         value={street}
         onChange={(e) => setStreet(e.target.value)}
@@ -80,6 +83,7 @@ const UserForm = ({ addUser }) => {
       />
       <input
         type="text"
+        id="suite"
         placeholder="Número da casa*"
         value={suite}
         onChange={(e) => setSuite(e.target.value)}
@@ -87,6 +91,7 @@ const UserForm = ({ addUser }) => {
       />
       <input
         type="text"
+        id="zipcode"
         placeholder="Cep*"
         value={zipcode}
         onChange={(e) => setZipcode(e.target.value)}
@@ -94,6 +99,7 @@ const UserForm = ({ addUser }) => {
       />
       <input
         type="text"
+        id="city"
         placeholder="Cidade*"
         value={city}
         onChange={(e) => setCity(e.target.value)}
@@ -101,6 +107,7 @@ const UserForm = ({ addUser }) => {
       />
       <input
         type="text"
+        id="lat"
         placeholder="Latitude*"
         value={lat}
         onChange={(e) => setLat(e.target.value)}
@@ -108,15 +115,16 @@ const UserForm = ({ addUser }) => {
       />
       <input
         type="text"
+        id="lng"
         placeholder="Longitude*"
         value={lng}
         onChange={(e) => setLng(e.target.value)}
         className={`p-2 border rounded input ${errors.lng ? 'border-error' : ''}`}
       />
       {Object.keys(errors).length > 0 && (
-        <p className="text-error mb-2">Por favor, preencha todos os campos obrigatórios.</p>
+        <p className="text-error mb-2" id="error">Por favor, preencha todos os campos obrigatórios.</p>
       )}
-      <button type="submit" className="p-2 bg-primary text-black rounded w-[200px]">Adicionar novo usuário</button>
+      <button id="addUserBtn" type="submit" className="p-2 bg-primary text-black rounded w-[200px]">Adicionar novo usuário</button>
     </form>
   );
 };
