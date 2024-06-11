@@ -7,6 +7,9 @@ const UserMap = ({ users, selectedUser }) => {
   const center = useMemo(() => {
     const usersToConsider = selectedUser ? [selectedUser] : users;
     if (usersToConsider.length === 0) return [0, 0];
+    if (usersToConsider.length === 1) {
+      return [parseFloat(usersToConsider[0].address.geo.lat), parseFloat(usersToConsider[0].address.geo.lng)];
+    }
     const latitudes = usersToConsider.map(user => parseFloat(user.address.geo.lat));
     const longitudes = usersToConsider.map(user => parseFloat(user.address.geo.lng));
     const avgLat = latitudes.reduce((acc, lat) => acc + lat, 0) / latitudes.length;
@@ -15,6 +18,7 @@ const UserMap = ({ users, selectedUser }) => {
   }, [users, selectedUser]);
 
   const usersToShow = selectedUser ? [selectedUser] : users;
+  console.log(center);
 
   return (
     <div className="flex map">
@@ -22,7 +26,8 @@ const UserMap = ({ users, selectedUser }) => {
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {usersToShow.map(user => (
+        {
+        usersToShow.map(user => (
           <Marker
             key={user.id}
             position={[parseFloat(user.address.geo.lat), parseFloat(user.address.geo.lng)]}

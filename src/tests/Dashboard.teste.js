@@ -54,7 +54,7 @@ describe('Testing the Dashboard page', () => {
     userEvent.type(inputName, 'Claudio');
 
     const inputEmail = screen.getByTestId('email');
-    userEvent.type(inputEmail, 'cludio@email.com');
+    userEvent.type(inputEmail, 'claudio@email.com');
 
     const inputCity = screen.getByTestId('city');
     userEvent.type(inputCity, 'São Paulo');
